@@ -24,7 +24,7 @@ Route::middleware(['auth', 'warga'])
     ->group(function () {
 
         Route::get('/dashboard', [WargaDashboardController::class, 'index'])
-            ->middleware('data.diri')
+            // ->middleware('data.diri')
             ->name('dashboard');
 
         Route::get('/profil', [ProfilController::class, 'edit'])

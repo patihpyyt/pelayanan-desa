@@ -37,31 +37,19 @@
         {{-- MENU --}}
         <div class="hidden items-center gap-8 md:flex">
 
-            <a
-                href="#beranda"
-                class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]"
-            >
+            <a href="#beranda" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
                 Beranda
             </a>
 
-            <a
-                href="#layanan"
-                class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]"
-            >
+            <a href="#layanan" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
                 Layanan
             </a>
 
-            <a
-                href="#cara-kerja"
-                class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]"
-            >
+            <a href="#cara-kerja" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
                 Cara Kerja
             </a>
 
-            <a
-                href="#tentang"
-                class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]"
-            >
+            <a href="#tentang" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
                 Tentang
             </a>
 
@@ -71,19 +59,26 @@
         {{-- AUTH --}}
         <div class="flex items-center gap-2">
 
-            <a
-                href="{{ route('login') }}"
-                class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#3D3A36] transition hover:bg-[#F3F0EA]"
-            >
-                Masuk
-            </a>
+            @guest
+                <a href="{{ route('login') }}" class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#3D3A36] transition hover:bg-[#F3F0EA]">
+                    Masuk
+                </a>
 
-            <a
-                href="{{ route('register') }}"
-                class="rounded-lg bg-[#A34F32] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#8D422A]"
-            >
-                Daftar
-            </a>
+                <a href="{{ route('register') }}" class="rounded-lg bg-[#A34F32] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#8D422A]">
+                    Daftar
+                </a>
+            @else
+                <a href="{{ Auth::user()->role === 'warga' ? route('warga.dashboard') : route('petugas.dashboard') }}" class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#3D3A36] transition hover:bg-[#F3F0EA]">
+                    Dashboard
+                </a>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="rounded-lg bg-[#A34F32] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#8D422A]">
+                        Logout
+                    </button>
+                </form>
+            @endguest
 
         </div>
 

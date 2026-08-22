@@ -1,12 +1,7 @@
 <x-app-layout>
 
-    {{-- NAVBAR --}}
-    <x-navbar />
+  
 
-
-    {{-- ========================= --}}
-    {{-- HERO --}}
-    {{-- ========================= --}}
 
     <section
         id="beranda"
@@ -59,7 +54,7 @@
 
 
             {{-- TITLE --}}
-            <h1 class="text-4xl font-extrabold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 class="text-3xl font-extrabold leading-[1.08] tracking-[-0.04em] text-white sm:text-2xl md:text-6xl lg:text-7xl">
 
                 Mengurus Administrasi Desa
 
@@ -182,10 +177,6 @@
     </section>
 
 
-    {{-- ========================= --}}
-    {{-- INTRO --}}
-    {{-- ========================= --}}
-
     <section class="bg-[#F7F5F0]">
 
         <div class="mx-auto max-w-7xl px-6 py-24">
@@ -213,9 +204,7 @@
     </section>
 
 
-    {{-- ========================= --}}
-    {{-- LAYANAN --}}
-    {{-- ========================= --}}
+    
 
     <section
         id="layanan"
@@ -347,11 +336,6 @@
 
     </section>
 
-
-    {{-- ========================= --}}
-    {{-- CARA KERJA --}}
-    {{-- ========================= --}}
-
     <section
         id="cara-kerja"
         class="bg-[#F7F5F0]"
@@ -446,11 +430,6 @@
         </div>
 
     </section>
-
-
-    {{-- ========================= --}}
-    {{-- CTA --}}
-    {{-- ========================= --}}
 
     <section
         id="tentang"

@@ -1,85 +1,55 @@
-<nav class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-xl">
-    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+
+<nav class="fixed left-0 right-0 top-0 z-50 border-b border-stone-800 bg-stone-950/90 backdrop-blur-md shadow-lg">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between pl-6 pr-6">
 
         {{-- LOGO --}}
         <a href="/" class="flex items-center gap-3">
-
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#20242B] text-white">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    class="h-5 w-5"
-                >
-                    <path d="M3 21h18" />
-                    <path d="M5 21V9l7-5 7 5v12" />
-                    <path d="M9 21v-7h6v7" />
-                    <path d="M9 10h.01" />
-                    <path d="M15 10h.01" />
-                </svg>
-            </div>
-
-            <div>
-                <h1 class="text-sm font-bold tracking-tight text-[#20242B]">
-                    Pelayanan Desa
-                </h1>
-
-                <p class="text-[11px] text-[#77736D]">
-                    Sistem Administrasi
-                </p>
-            </div>
-
+            <img src="{{ asset('image/aik.png') }}" alt="Logo Desa Air Ruai" class="h-10 w-auto">
+            <span class="text-xl font-extrabold tracking-wide uppercase text-white">
+                Kantor Desa <span class="text-amber-400">Air Ruai</span>
+            </span>
         </a>
 
-
-        {{-- MENU --}}
-        <div class="hidden items-center gap-8 md:flex">
-
-            <a href="#beranda" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
+        {{-- MENU NAVIGATION --}}
+        <div class="hidden items-center gap-6 md:flex text-xs font-bold uppercase tracking-wider">
+            <a href="#beranda" class="text-amber-400 transition hover:text-amber-300">
                 Beranda
             </a>
+            
+            {{-- DROPDOWN TENTANG DESA --}}
+            <div class="relative group cursor-pointer text-gray-300 hover:text-amber-400 flex items-center gap-1 py-7 transition">
+                <span>Tentang Desa</span>
+                <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
 
-            <a href="#layanan" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
-                Layanan
+            {{-- DROPDOWN KEUNGGULAN DESA --}}
+            <div class="relative group cursor-pointer text-gray-300 hover:text-amber-400 flex items-center gap-1 py-7 transition">
+                <span>Keunggulan Desa</span>
+                <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+
+            <a href="#berita" class="text-gray-300 hover:text-amber-400 transition">
+                Berita
             </a>
-
-            <a href="#cara-kerja" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
-                Cara Kerja
+            <a href="#event" class="text-gray-300 hover:text-amber-400 transition">
+                Event
             </a>
-
-            <a href="#tentang" class="text-sm font-medium text-[#55514B] transition hover:text-[#A34F32]">
-                Tentang
+            <a href="#artikel" class="text-gray-300 hover:text-amber-400 transition">
+                Artikel
             </a>
-
         </div>
 
-
-        {{-- AUTH --}}
-        <div class="flex items-center gap-2">
-
-            @guest
-                <a href="{{ route('login') }}" class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#3D3A36] transition hover:bg-[#F3F0EA]">
-                    Masuk
-                </a>
-
-                <a href="{{ route('register') }}" class="rounded-lg bg-[#A34F32] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#8D422A]">
-                    Daftar
-                </a>
-            @else
-                <a href="{{ Auth::user()->role === 'warga' ? route('warga.dashboard') : route('petugas.dashboard') }}" class="rounded-lg px-4 py-2.5 text-sm font-semibold text-[#3D3A36] transition hover:bg-[#F3F0EA]">
-                    Dashboard
-                </a>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="rounded-lg bg-[#A34F32] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#8D422A]">
-                        Logout
-                    </button>
-                </form>
-            @endguest
-
+        {{-- AUTH & CTA BUTTONS --}}
+        <div class="flex items-center gap-3">
+            <a href="{{ route('login') }}" class="rounded-lg border border-amber-400/40 px-4 py-2 text-xs font-bold uppercase tracking-wider text-amber-400 transition hover:bg-amber-400 hover:text-black">
+                Masuk
+            </a>
+            <a href="{{ route('register') }}" class="rounded-lg bg-amber-400 px-4 py-2 text-xs font-bold uppercase tracking-wider text-black transition hover:bg-amber-500 shadow-md shadow-amber-400/10">
+                Daftar
+            </a>
+            <a href="#kontak" class="hidden rounded-lg bg-stone-800 border border-stone-700 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-stone-700 sm:inline-block">
+                Kontak
+            </a>
         </div>
 
     </div>

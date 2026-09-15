@@ -1,57 +1,74 @@
 <x-app-layout>
 
-    {{-- HERO SECTION / SLIDER --}}
-    <section id="beranda" class="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-20">
-        {{-- Background Image dengan Gradasi Memudar ke Putih (Anti-Pahatan) --}}
-        <div class="absolute inset-0">
-            <img src="{{ asset('image/ruai.png') }}" alt="Sejarah Desa Ruai" class="h-full w-full object-cover">
-            {{-- Overlay Gelap di Atas & Memudar Lembut ke Putih di Bawah --}}
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-50"></div>
+<section id="beranda" class="relative flex min-h-[90vh] flex-col justify-between overflow-hidden pt-28 bg-emerald-950">
+    {{-- Background Image + Overlay Gelap --}}
+    <div class="absolute inset-0 z-0">
+        <img src="{{ asset('image/ruai.png') }}" alt="Desa Air Ruai" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-emerald-950/50 to-emerald-950"></div>
+    </div>
+
+    {{-- Navigasi Panah Slider --}}
+    <button class="absolute left-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white backdrop-blur-md transition hover:bg-emerald-600">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button class="absolute right-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white backdrop-blur-md transition hover:bg-emerald-600">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    {{-- Hero Content --}}
+    <div class="relative z-10 my-auto mx-auto max-w-5xl px-6 pt-6 text-center">
+        {{-- Tagline dengan Aksen Kuning --}}
+        <p class="text-xs font-bold uppercase tracking-widest text-amber-400 md:text-sm">
+            PORTAL PELAYANAN MANDIRI
+        </p>
+        
+        <h1 class="mt-3 text-4xl font-extrabold uppercase leading-tight tracking-tight text-white md:text-5xl">
+            LAYANAN DIGITAL APLIKASI <br>
+            <span class="text-emerald-400">DESA AIR RUAI</span>
+        </h1>
+        
+        <p class="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-gray-200 md:text-lg">
+            Mempermudah warga dalam pengajuan surat administrasi secara <span class="font-semibold text-amber-300">online</span> dan membantu petugas balai desa memproses permohonan dengan lebih <span class="font-semibold text-amber-300">cepat, transparan, serta terintegrasi</span>.
+        </p>
+
+        {{-- TOMBOL CTA DI ATAS GAMBAR --}}
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="{{ route('register') }}" class="rounded-xl bg-amber-400 px-7 py-3.5 text-xs font-black uppercase tracking-wider text-slate-950 transition hover:bg-amber-300 shadow-lg shadow-amber-400/20 hover:scale-105">
+                Buat Pengajuan Surat
+            </a>
+            <a href="#keunggulan" class="rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition hover:bg-white/20">
+                Lihat Panduan Warga
+            </a>
         </div>
 
-        {{-- Navigasi Panah Slider --}}
-        <button class="absolute left-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white backdrop-blur-md transition hover:bg-emerald-600">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button class="absolute right-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white backdrop-blur-md transition hover:bg-emerald-600">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </button>
-
-        {{-- Hero Content --}}
-<div class="relative z-10 max-w-5xl px-6 text-center pb-12">
-    <p class="text-xs font-bold uppercase tracking-widest text-emerald-400 md:text-sm">
-        PORTAL PELAYANAN MANDIRI
-    </p>
-    <h1 class="mt-3 text-4xl font-extrabold uppercase leading-tight tracking-tight text-white md:text-5xl">
-        LAYANAN DIGITAL APLIKASI <br>
-        <span class="text-emerald-400">DESA AIR RUAI</span>
-    </h1>
-    
-    <p class="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-gray-200 md:text-lg">
-        Mempermudah warga dalam pengajuan surat administrasi secara online dan membantu petugas balai desa memproses permohonan dengan lebih cepat, transparan, serta terintegrasi.
-    </p>
-
-    {{-- Ringkasan Statistik Singkat --}}
-    <div class="mt-10 grid grid-cols-2 gap-4 rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-xl md:grid-cols-4">
-        <div class="border-r border-white/10 last:border-r-0">
-            <p class="text-3xl font-black text-emerald-400">Cepat</p>
-            <p class="text-xs font-medium text-gray-200">Pengajuan Surat</p>
-        </div>
-        <div class="border-r border-white/10 last:border-r-0">
-            <p class="text-3xl font-black text-emerald-400">24/7</p>
-            <p class="text-xs font-medium text-gray-200">Akses Mandiri</p>
-        </div>
-        <div class="border-r border-white/10 last:border-r-0">
-            <p class="text-3xl font-black text-emerald-400">Mudah</p>
-            <p class="text-xs font-medium text-gray-200">Pantau Berkas</p>
-        </div>
-        <div>
-            <p class="text-3xl font-black text-emerald-400">Efisien</p>
-            <p class="text-xs font-medium text-gray-200">Kerja Petugas</p>
+        {{-- Ringkasan Statistik dengan Aksen Kuning --}}
+        <div class="mt-10 grid grid-cols-2 gap-4 rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md shadow-xl md:grid-cols-4">
+            <div class="border-r border-white/10 last:border-r-0">
+                <p class="text-3xl font-black text-amber-400">Cepat</p>
+                <p class="text-xs font-medium text-gray-200">Pengajuan Surat</p>
+            </div>
+            <div class="border-r border-white/10 last:border-r-0">
+                <p class="text-3xl font-black text-emerald-400">24/7</p>
+                <p class="text-xs font-medium text-gray-200">Akses Mandiri</p>
+            </div>
+            <div class="border-r border-white/10 last:border-r-0">
+                <p class="text-3xl font-black text-amber-400">Mudah</p>
+                <p class="text-xs font-medium text-gray-200">Pantau Berkas</p>
+            </div>
+            <div>
+                <p class="text-3xl font-black text-emerald-400">Efisien</p>
+                <p class="text-xs font-medium text-gray-200">Kerja Petugas</p>
+            </div>
         </div>
     </div>
-</div>
-    </section>
+
+    {{-- WAVE DIVIDER --}}
+    <div class="relative z-10 w-full overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 md:h-20 text-slate-50" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.6,200,115.8,241.1,112.35,281.82,88.9,321.39,56.44Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</section>
 
     {{-- SECTION: TENTANG DESA RUAI & HISTORIS --}}
     <section id="tentang" class="bg-slate-50 py-20 text-gray-800">

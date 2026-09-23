@@ -13,15 +13,19 @@
 
     <x-navbar />
 
-    @isset($header)
-    <div class="bg-white border-b border-gray-100 px-6 py-4">
-        <div class="max-w-7xl mx-auto">
-            {{ $header }}
-        </div>
-    </div>
-    @endisset
+    <div class="pt-20">
 
-    {{ $slot }}
+        @isset($header)
+        <div class="bg-white border-b border-gray-100 px-6 py-4">
+            <div class="max-w-7xl mx-auto">
+                {{ $header }}
+            </div>
+        </div>
+        @endisset
+
+        {{ $slot }}
+
+    </div>
 
     <x-footer />
 

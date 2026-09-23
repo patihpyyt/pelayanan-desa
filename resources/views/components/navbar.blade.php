@@ -11,9 +11,9 @@
 
         {{-- MENU NAVIGATION --}}
         <div class="hidden items-center gap-6 md:flex text-xs font-bold uppercase tracking-wider">
-            <a href="#beranda" class="text-emerald-400 transition hover:text-emerald-300">
-                Beranda
-            </a>
+          <a href="{{ url('/') }}#beranda" class="text-emerald-400 transition hover:text-emerald-300">
+    Beranda
+</a>
             
             {{-- DROPDOWN TENTANG DESA --}}
             <div class="relative group cursor-pointer text-gray-200 hover:text-emerald-400 flex items-center gap-1 py-7 transition">
@@ -38,18 +38,35 @@
             </a>
         </div>
 
-        {{-- AUTH & CTA BUTTONS --}}
-        <div class="flex items-center gap-3">
-            <a href="{{ route('login') }}" class="rounded-lg border border-emerald-400/40 px-4 py-2 text-xs font-bold uppercase tracking-wider text-emerald-400 transition hover:bg-emerald-500 hover:text-black">
-                Masuk
-            </a>
-            <a href="{{ route('register') }}" class="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-emerald-500 shadow-md shadow-emerald-900/30">
-                Daftar
-            </a>
-            <a href="#kontak" class="hidden rounded-lg bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/20 sm:inline-block">
-                Kontak
-            </a>
-        </div>
+      {{-- AUTH & CTA BUTTONS --}}
+<div class="flex items-center gap-3">
+
+    @guest
+        <a href="{{ route('login') }}" class="rounded-lg border border-emerald-400/40 px-4 py-2 text-xs font-bold uppercase tracking-wider text-emerald-400 transition hover:bg-emerald-500 hover:text-black">
+            Masuk
+        </a>
+        <a href="{{ route('register') }}" class="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-emerald-500 shadow-md shadow-emerald-900/30">
+            Daftar
+        </a>
+    @endguest
+
+    @auth
+        <a href="{{ route('dashboard') }}" class="rounded-lg border border-emerald-400/40 px-4 py-2 text-xs font-bold uppercase tracking-wider text-emerald-400 transition hover:bg-emerald-500 hover:text-black">
+            Dashboard
+        </a>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="rounded-lg bg-red-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-red-500">
+                Keluar
+            </button>
+        </form>
+    @endauth
+
+    <a href="#kontak" class="hidden rounded-lg bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/20 sm:inline-block">
+        Kontak
+    </a>
+</div>
 
     </div>
 </nav>

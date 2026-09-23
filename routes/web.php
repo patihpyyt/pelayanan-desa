@@ -24,7 +24,6 @@ Route::middleware(['auth', 'warga'])
     ->group(function () {
 
         Route::get('/dashboard', [WargaDashboardController::class, 'index'])
-            // ->middleware('data.diri')
             ->name('dashboard');
 
         Route::get('/profil', [ProfilController::class, 'edit'])
@@ -32,6 +31,10 @@ Route::middleware(['auth', 'warga'])
 
         Route::put('/profil', [ProfilController::class, 'update'])
             ->name('profil.update');
+
+        // ---> TAMBAHKAN ROUTE INPUT DATA WARGA & UPLOAD BERKAS DI SINI <---
+        Route::get('/data-diri/tambah', [App\Http\Controllers\WargaController::class, 'create'])->name('data.diri.create');
+        Route::post('/data-diri/simpan', [App\Http\Controllers\WargaController::class, 'store'])->name('data.diri.store');
     });
 
 // dashboard generik: cuma jadi "router" berdasarkan role, redirect ke dashboard masing-masing
